@@ -1,6 +1,7 @@
 import { ThemeProvider } from '@material-ui/core/styles';
 import { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import LandingPage from './LandingPage';
 import Footer from './ui/Footer';
 import Header from './ui/Header';
 import theme from './ui/Themes';
@@ -19,7 +20,17 @@ function App() {
           setSelectedIndex={setSelectedIndex}
         />
         <Switch>
-          <Route exact path='/' component={() => <div>Home</div>} />
+          <Route
+            exact
+            path='/'
+            render={(props) => (
+              <LandingPage
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
+          />
           <Route exact path='/services' component={() => <div>Services</div>} />
           <Route
             exact
